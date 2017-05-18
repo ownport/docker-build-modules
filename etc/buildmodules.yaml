@@ -1,0 +1,9 @@
+---
+# Module: buildmodules.alpine.v1.apkcache
+buildmodules.alpine.v1.clean_cache: false
+
+# Module: buildmodules.alpine.v1.python
+buildmodules.alpine.v1.python.install_pip: false
+
+# Module: buildmodules.alpine.v1.python3
+buildmodules.alpine.v1.python3.install_pip: false
