@@ -1,9 +1,13 @@
 ---
+#
+#   Alpine cache
+#
 # Module: buildmodules.alpine.v1.apkcache
 buildmodules.alpine.v1.clean_cache: false
-
+#
+#   Python
+#
 # Module: buildmodules.alpine.v1.python
 buildmodules.alpine.v1.python.install_pip: false
-
-# Module: buildmodules.alpine.v1.python3
-buildmodules.alpine.v1.python3.install_pip: false
+# install python3 (py3) or python2 (py2). Python3 is default
+buildmodules.alpine.v1.python.version: py3
