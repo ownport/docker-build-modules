@@ -1,0 +1,40 @@
+MAKEFILE := $(lastword $(MAKEFILE_LIST))
+
+define build
+    /media/d2/dev/github/docker-image-builder/target/docker-image-builder build \
+		--re-run \
+		--remove-staging \
+		-s alpine:3.5 -t $(1) \
+		--build-modules-path $(shell pwd) \
+		--build-module $(2) \
+		--volume alpine3.5-apk-cache:/etc/apk/cache/ \
+		--vars $(shell pwd)/etc/buildmodules.yaml \
+		$(3) $(4) $(5) $(6) $(7) $(8)
+endef
+
+
+alpine3.5:
+	$(call build,\
+		ownport/alpine3.5:201705v1,\
+		buildmodules.alpine.v1)
+
+alpine3.5-apkcache:
+	$(call build,
+		ownport/alpine3.5-apkcache:201705v1,\
+		buildmodules.alpine.v1.apkcache)
+
+alpine3.5-py2.7:
+	$(call build,\
+		ownport/alpine3.5-py2.7:201705v1,\
+		buildmodules.alpine.v1.python,\
+	    --vars,'{ "buildmodules.alpine.v1.python.version": "py2" }')
+
+alpine3.5-py3.5:
+	$(call build,\
+		ownport/alpine3.5-py3.5:201705v1,\
+		buildmodules.alpine.v1.python)
+
+build-all: \
+	alpine3.5 \
+	alpine3.5-apkcache \
+	alpine3.5-py2.7 alpine3.5-py3.5
