@@ -5,7 +5,7 @@ from buildmodules.alpine.v1 import BuildModule as AlpineBuildModule
 
 class BuildModule(AlpineBuildModule):
 
-    def process(self, **kwargs):
+    def process(self):
         # TODO commented due to using docker volumes for caching Alpine packages
         # self.logger.info(msg='Configuring Alpine cache components')
         # self.ctx.cmd('ln -s /var/cache/apk /etc/apk/cache')
