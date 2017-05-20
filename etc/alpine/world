@@ -3,4 +3,5 @@ alpine-keys
 apk-tools
 libc-utils
 python
+python3
 py-pip
